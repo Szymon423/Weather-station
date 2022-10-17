@@ -23,7 +23,7 @@ As I mentioned at the beggining I want it to be portable. It means that I have t
 <a href="https://www.waveshare.com/catalog/product/view/id/3513/s/4.2inch-e-paper-module-c/category/37/"> link to display</a> 
 
 <p align="center">
-    <img width="600" src="https://user-images.githubusercontent.com/96399051/196177778-08e9e754-85e0-445c-af26-78eb0890aaf0.png" alt="E-paper display graphic">
+    <img width="700" src="https://user-images.githubusercontent.com/96399051/196188731-9ab27082-e6db-49f7-9c36-b119f6a931ea.png">
 </p>
 
 ### Decide on controll hardware
