@@ -23,7 +23,7 @@ As I mentioned at the beggining I want it to be portable. It means that I have t
 <a href="https://www.waveshare.com/catalog/product/view/id/3513/s/4.2inch-e-paper-module-c/category/37/"> link to display</a> 
 
 <p align="center">
-    <img width="800" src="https://user-images.githubusercontent.com/96399051/196177778-08e9e754-85e0-445c-af26-78eb0890aaf0.png" alt="E-paper display graphic">
+    <img width="600" src="https://user-images.githubusercontent.com/96399051/196177778-08e9e754-85e0-445c-af26-78eb0890aaf0.png" alt="E-paper display graphic">
 </p>
 
 ### Decide on controll hardware
@@ -35,12 +35,14 @@ As I mentioned at the beggining I want it to be portable. It means that I have t
    * DHT22 for local temperature and humidity data
    * USB to serial converter
 
-### design PCB
+### Designed PCB
 Currently I am stuck at this stage becouse of troubles in finding SPI pins in ESP32. Thus i ordered sample of uC and when it comes to me, I will find those pins and finish PCB so I can order it.
 
 <p align="center">
-    <img width="800" src="https://user-images.githubusercontent.com/96399051/196177778-08e9e754-85e0-445c-af26-78eb0890aaf0.png" alt="E-paper display graphic">
+    <img width="700" src="https://user-images.githubusercontent.com/96399051/196184159-a23547b7-e0d4-463d-8653-d4d45a4162a4.png">
+    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196183280-c72d3c10-4ad7-40ee-a218-40e4544c3f27.png">
+    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196182075-ed64cc35-3423-40c2-9f1f-27ffc8650ccb.png">
+    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196182224-ddec7c48-9f9d-4ff3-b8a5-33375a903772.png">
 </p>
 
-
-
+### Thats all for now...
