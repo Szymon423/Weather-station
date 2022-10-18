@@ -45,4 +45,5 @@ Currently I am stuck at this stage becouse of troubles in finding SPI pins in ES
     <img width="1000" src="https://user-images.githubusercontent.com/96399051/196182224-ddec7c48-9f9d-4ff3-b8a5-33375a903772.png">
 </p>
 
-### Thats all for now...
+#### ESP32 WROOM S3 (8R8) arrived 
+Becouse of i I can finally check which pins are SPI pins :) The way I did it was simple but quite annoying. I soldered few wires to ESP32, like shown in schematic below.
