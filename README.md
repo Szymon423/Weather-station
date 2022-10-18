@@ -41,9 +41,24 @@ Currently I am stuck at this stage becouse of troubles in finding SPI pins in ES
 <p align="center">
     <img width="700" src="https://user-images.githubusercontent.com/96399051/196184159-a23547b7-e0d4-463d-8653-d4d45a4162a4.png">
     <img width="1000" src="https://user-images.githubusercontent.com/96399051/196183280-c72d3c10-4ad7-40ee-a218-40e4544c3f27.png">
-    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196182075-ed64cc35-3423-40c2-9f1f-27ffc8650ccb.png">
-    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196182224-ddec7c48-9f9d-4ff3-b8a5-33375a903772.png">
 </p>
 
 #### ESP32 WROOM S3 (8R8) arrived 
 Becouse of i I can finally check which pins are SPI pins :) The way I did it was simple but quite annoying. I soldered few wires to ESP32, like shown in schematic below.
+
+<p align="center">
+    <img width="700" src="https://user-images.githubusercontent.com/96399051/196534119-e134a4f7-468d-41f3-86ce-26c0bfb6b0f4.png">
+</p>
+
+With those connections I was able to uplooad some code necessary to find SPI pins - look at SPI_ins_dectection.ino
+
+<p align="center">
+    <img width="500" src="https://user-images.githubusercontent.com/96399051/196534745-c78add54-8a00-44dc-b0df-beda88d84f1c.png">
+</p>
+
+Now I know that my moodule has SPI pins arranged as shown below:
+| MOSI          | MISO          | SCK     |
+| :-----------: |:-------------:| :------:|
+| GPIO 35       | GPIO 37       | GPIO 36 |
+
+## To be continiued...
