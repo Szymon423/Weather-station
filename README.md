@@ -47,19 +47,23 @@ Currently I am stuck at this stage becouse of troubles in finding SPI pins in ES
 Becouse of it I can finally check which pins are SPI pins :) The way I did it was simple but quite annoying. I soldered few wires to ESP32, like shown in schematic below.
 
 <p align="center">
-    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196534119-e134a4f7-468d-41f3-86ce-26c0bfb6b0f4.png">
-    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196539455-dd81bc47-4798-41cb-9470-a69ede9ad644.jpg">
+    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196614634-ae82f9af-3edd-4ff4-a6c8-97338e721600.png">
+    <img width="1000" src="https://user-images.githubusercontent.com/96399051/196615184-c6715b09-857e-4940-aed5-b1352778c5f3.jpg">
 </p>
 
-With those connections I was able to uplooad some code necessary to find SPI pins - look at *SPI_pins_dectection.ino*.
+With those connections I was able to upload some code necessary to find SPI pins - look at *SPI_pins_dectection.ino*.
 
 <p align="center">
     <img width="500" src="https://user-images.githubusercontent.com/96399051/196534745-c78add54-8a00-44dc-b0df-beda88d84f1c.png">
 </p>
 
+
 Now I know that my moodule has SPI pins arranged as shown below:
+
 | MOSI          | MISO          | SCK     |
 | :-----------: |:-------------:| :------:|
 | GPIO 35       | GPIO 37       | GPIO 36 |
+
+
 
 ## To be continiued...
