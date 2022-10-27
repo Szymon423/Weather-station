@@ -9,9 +9,11 @@ My goal is to desing small weather station which is going to show weather data o
  * find appropriate display ✅
  * decide on controll hardware ✅
  * design PCB ✅
- * wait moths for manfacturing and delievery
- * design enclousure (optional, I kinda like raw electronics)
+ * wait moths for manfacturing and delievery ✅
+ * assembly time
+ * error fixing
  * do some coding
+ * design enclousure (optional, I kinda like raw electronics)
  * be happy
  
 ### General idea about design and working properties
@@ -54,9 +56,16 @@ With those connections I was able to upload some code necessary to find SPI pins
 
 Now I know that my moodule has SPI pins arranged as shown below:
 
-| MOSI          | MISO          | SCK     |
-| :-----------: |:-------------:| :------:|
-| GPIO 35       | GPIO 37       | GPIO 36 |
+<div align="center">
+<table>
+  <tr>
+    <td>MOSI</td> <td>MISO</td> <td>SCK</td>
+  </tr>
+  <tr>
+    <td>GPIO 35</td> <td>GPIO 37</td> <td>GPIO 36</td>
+  </tr>
+</table>
+</div>
 
 #### Resoult of design
 <p align="center">
@@ -66,7 +75,24 @@ Now I know that my moodule has SPI pins arranged as shown below:
 
 I never tried soldering SMD components becouse I do not own hot-air station. But becouse jlcPCB offers SMT services I want to try it. It requires little more work around to generate proper BOOM files.
 #### NEVER MIND
-After exporting everything (GERBER, BOM and PickAndPlace files) it turned out that my SMT service will cost me arround $120... At this point I recidet to change few things. Most importantlu i decided to soler all by hand. Secondly I got rid of CP2101 USB to UART converter and put out RX and TX pins but also connected native USB D+ and D- to proper pins on ESP32. At this point I reduced number of parts and my total cost (with ordering parts at LCSC) was $30 - much more affordable...
+After exporting everything (GERBER, BOM and PickAndPlace files) it turned out that SMT service will cost me arround $120... At this point I decidet to change few things. Most importantly i decided to solder all components by hand. Secondly I got rid of CP2101 USB to UART converter and put out RX and TX pins but also connected USB D+ and D- to proper pins on ESP32. At this point I reduced number of parts and my total cost (with ordering parts at LCSC) was $30 - much more affordable...
 
 ## Time for endless waiting for packages...
 See you soon...
+
+## Meanwhile i'll start playing around with the code
+Check out ESP32-code folder. I want to make as easy as possible so... 
+We gonna have to make few things:
+ * create class for API handling:
+    - send API request,
+    - interpret JSON data,
+ * create class for local weather data handling:
+    - readings from DHT22
+ * create class for E-paper display handling
+    - prepare fonts,
+    - prepare graphics - cloud, snow, sun, fog etc. and other necesarry icons
+    - waveshare libs to use my e-ink display,
+ * try to use touch sensors for stuff like:
+    - force update,
+    - different data,
+  
