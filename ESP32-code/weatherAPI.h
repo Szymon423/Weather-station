@@ -1,9 +1,10 @@
 #pragma once
+
 #include <Arduino.h>
 #include <String.h>
 
 
-class weatherAPI {
+class WeatherAPI {
   // class responsible for recieving weather data from API
 
   public:
@@ -15,20 +16,22 @@ class weatherAPI {
     float tempFeelsLike;
     int pressure;
     int humidity;
-    int clouds;
 
   private:
     String JSON;
     String APIKey;
     String coordinatesLon;
     String coordinatesLat;
+    String requestString;
 
-  weatherAPI();
-  ~weatherAPI();
+  WeatherAPI();
+  ~WeatherAPI();
 
   private: 
     void getData();
     void processData();
+    void generateRequestString();
+    String getValueOf(String);
 
   public:
     void update();
