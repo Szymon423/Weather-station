@@ -10,7 +10,7 @@ WeatherAPI::WeatherAPI() {
   WeatherAPI::tempFeelsLike = 0.0;
   WeatherAPI::pressure = 0;
   WeatherAPI::humidity = 0;
-  WeatherAPI::APIKey = "1c468005da0a50bd2dd88333e3d66285"; // 1c468005da0a50bd2dd88333e3d66285
+  WeatherAPI::APIKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
   WeatherAPI::coordinatesLon = "17.0549";
   WeatherAPI::coordinatesLat = "51.1107";
   WeatherAPI::JSON = "";
