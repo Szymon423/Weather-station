@@ -96,3 +96,4 @@ We gonna have to make few things:
     - force update,
     - different data,
   
+## PCBs arrived, but still waiting for parts
