@@ -69,8 +69,8 @@ Now I know that my moodule has SPI pins arranged as shown below:
 
 #### Resoult of design
 <p align="center">
-    <img width="700" src="https://user-images.githubusercontent.com/96399051/197221349-3f205876-662d-4a39-8b8d-d7c645a883a5.png">
-    <img width="1000" src="https://user-images.githubusercontent.com/96399051/197221361-2ad03126-f8a9-4172-8ffd-72034494a829.png">
+    <img width="1000" src="https://user-images.githubusercontent.com/96399051/200118391-1c545037-b72d-4435-9b2d-04e3d4fc9890.png">
+    <img width="1000" src="https://user-images.githubusercontent.com/96399051/200118422-a2ce41f9-5c4a-4c0c-947a-445f1c708054.png">
 </p>
 
 I never tried soldering SMD components becouse I do not own hot-air station. But becouse jlcPCB offers SMT services I want to try it. It requires little more work around to generate proper BOOM files.
@@ -97,3 +97,9 @@ We gonna have to make few things:
     - different data,
   
 ## PCBs arrived, but still waiting for parts
+FUCK POCZTA POLSKA ODDZIAŁ W KOMORNIKACH...
+
+## I wanted to see how it's going to look so..
+
+
+
