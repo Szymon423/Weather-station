@@ -113,7 +113,7 @@ Soldering them was real pain in the ass. The 0402 elements are so small XDD. I a
 
 ## B U T
 as always I had to mess something. This time there are few things designed in wrong way. 
-### BUT #1
+### BUT #1 ✅SOLVED✅
 First error is This resistor.
 
 <p align="center">
@@ -126,49 +126,40 @@ And this is how it's suppose to look like
     <img width="700" src="https://user-images.githubusercontent.com/96399051/201498594-14afde7b-c9e3-48d2-b425-184c0fb48bd5.png">
 </p>
 
-This resistor was blocking charging current so for now I shorted it, and this part works well.
+This resistor was blocking charging current so for now I shorted it, and this part works well. I ordered 0 Ohm resistor to put there instead and I thing it's okay.
 
-### BUT #2
+### BUT #2 ✅SOLVED✅
 I ordered 10k Ohm NTC Thermistors instead of 10k Ohm resistors. They are just pullup resistors and in room tepmeratures they are just working fine, but I have to replcae them.
 
-### BUT #3
+### BUT #3 ✅SOLVED✅
 I ordered wrong value capacitors for LDO output filtering and resistors for charging current defining. But in this case it's still matter of ordering proper parts.
 
-### BUT #4
+### BUT #4 ✅SOLVED✅
 I don't know why but my LDO is eating to much current. Without anything attached to 3.3VDC there is like 5mA current consumption so it sucks AF. Ground - 3.3V resistance is like 600 Ohm... I'll have to order an LDO with lower no-load current.
+After some research I've found <a href="https://www.tme.eu/pl/details/tlv1117lv33dcyt/stabilizatory-napiecia-nieregulowane-ldo/texas-instruments/"> TLV1117LV33DCYT</a> this little buddy with perfect specs:
+ * low dropout voltage - at 200mA dropuot is 115mV, at 500mA it's 285mV, 
+ * quiescent current at 0mA is 50μA so it's 100 times less than my previous LDO. 
+It means that my circuit will last much much longer on single charge.
 
-### BUT #5
+### BUT #5 ✅SOLVED✅
 I haven't put any transistor to controll DHT22, so right now it's always powered on. This also sucks but I hope It's not going to eat to much current.
+After some research I've learnt that this is quite low power demanding circuit with consumption around:
+ * 1mA while measuring,
+ * 40μA during standby.
 
-### BUT #6
+### BUT #6 ✅SOLVED✅
 ESP32 was also real pain in the ass to setup. I was strugling for 2 days to properly configure it in Arduino IDE. When doing it inproperly ESP32 was falling into bootloop. Luckly i found information that I am suppose to set my board as bellow:
 
 <p align="center">
     <img width="500" src="https://user-images.githubusercontent.com/96399051/201499719-ee92b460-ac90-4714-8273-037efe10895e.PNG">
 </p>
 
-### BUT #7
+### BUT #7 ✅SOLVED✅
+I have to buy bigger battery and implement deep sleep in ESP32.
+I've chosen <a href="https://botland.com.pl/akumulatory-li-pol-1s-37v/15643-akumulator-li-pol-akyga-3500mah-1s-37v-zlacze-jst-bec-gniazdo-68x55x6mm-5904422324438.html">Akyga Li-Pol 3500mAh 1S battery</a> and I thing that this is quite enough. After I finish assemblu and error-fixing I'll do some measurements to check how long it can last on one charge.
+
+### BUT #8 
 Touch sensors do not want to work. Sometimes i get them working, but only sometimes. When i reset ESP32 once it works and once it doesn't. I do not know why. So I have to dig deeper to find out why...
 
-### BUT #8
-I have to buy bigger battery and implement deep sleep in ESP32.
-
-## On the bright side
-### USB C works beautifuly
-ESP32 builtin USB is so big time saver. I don't need any USB -> UART converter so it's time and cash saver.
-
-### DHT works as supposed to
-Another little win for me.
-
-### I managed to solder everything
-Even though I used so freacking small components I managed to solder every 0402 resistor and capacitor.
-
-### It looks awesome
-I just love it.
-
 ### To do
- * buy 10k, 2k2, 0 resistors (0805),
- * buy 0.33u capacitor 0402,
- * buy better LDO,
- * buy bigger battery,
  * try to find out why touch doesn't work
