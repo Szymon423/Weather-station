@@ -10,8 +10,8 @@ My goal is to desing small weather station which is going to show weather data o
  * decide on controll hardware ✅
  * design PCB ✅
  * wait moths for manfacturing and delievery ✅
- * assembly time
- * error fixing
+ * assembly time ✅
+ * error fixing ✅
  * do some coding
  * design enclousure (optional, I kinda like raw electronics)
  * be happy
@@ -148,9 +148,27 @@ ESP32 was also real pain in the ass to setup. I was strugling for 2 days to prop
 </p>
 
 ### BUT #7
-I have to buy bigger battery and implement deep sleep in ESP32
+Touch sensors do not want to work. Sometimes i get them working, but only sometimes. When i reset ESP32 once it works and once it doesn't. I do not know why. So I have to dig deeper to find out why...
+
+### BUT #8
+I have to buy bigger battery and implement deep sleep in ESP32.
 
 ## On the bright side
-###USB C works beautifuly
+### USB C works beautifuly
+ESP32 builtin USB is so big time saver. I don't need any USB -> UART converter so it's time and cash saver.
 
+### DHT works as supposed to
+Another little win for me.
 
+### I managed to solder everything
+Even though I used so freacking small components I managed to solder every 0402 resistor and capacitor.
+
+### It looks awesome
+I just love it.
+
+### To do
+ * buy 10k, 2k2, 0 resistors (0805),
+ * buy 0.33u capacitor 0402,
+ * buy better LDO,
+ * buy bigger battery,
+ * try to find out why touch doesn't work
