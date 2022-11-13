@@ -95,14 +95,62 @@ We gonna have to make few things:
  * try to use touch sensors for stuff like:
     - force update,
     - different data,
-  
-## PCBs arrived, but still waiting for parts
-FUCK POCZTA POLSKA ODDZIAŁ W KOMORNIKACH...
 
 ## I wanted to see how it's going to look so..
 I've made this
 <p align="center">
     <img width="500" src="https://user-images.githubusercontent.com/96399051/200177085-17c673ac-e258-4a7e-a6a4-f17d2f2df1d6.gif">
 </p>
+
+## PCBs arrived, but still waiting for parts
+FUCK POCZTA POLSKA ODDZIAŁ W KOMORNIKACH... but it's finally here <3
+
+## So they look amazing...
+<p align="center">
+    <img width="800" src="https://user-images.githubusercontent.com/96399051/201498334-b1ec0ba2-125a-43d1-a431-b7dafbb4a589.png">
+</p>
+Soldering them was real pain in the ass. The 0402 elements are so small XDD. I am never going to design PCB with this small components. 
+
+## B U T
+as always I had to mess something. This time there are few things designed in wrong way. 
+### BUT #1
+First error is This resistor.
+
+<p align="center">
+    <img width="700" src="https://user-images.githubusercontent.com/96399051/201498481-2c25a418-c743-493d-bbe4-3b5a227fba6f.png">
+</p>
+
+And this is how it's suppose to look like
+
+<p align="center">
+    <img width="700" src="https://user-images.githubusercontent.com/96399051/201498594-14afde7b-c9e3-48d2-b425-184c0fb48bd5.png">
+</p>
+
+This resistor was blocking charging current so for now I shorted it, and this part works well.
+
+### BUT #2
+I ordered 10k Ohm NTC Thermistors instead of 10k Ohm resistors. They are just pullup resistors and in room tepmeratures they are just working fine, but I have to replcae them.
+
+### BUT #3
+I ordered wrong value capacitors for LDO output filtering and resistors for charging current defining. But in this case it's still matter of ordering proper parts.
+
+### BUT #4
+I don't know why but my LDO is eating to much current. Without anything attached to 3.3VDC there is like 5mA current consumption so it sucks AF. Ground - 3.3V resistance is like 600 Ohm... I'll have to order an LDO with lower no-load current.
+
+### BUT #5
+I haven't put any transistor to controll DHT22, so right now it's always powered on. This also sucks but I hope It's not going to eat to much current.
+
+### BUT #6
+ESP32 was also real pain in the ass to setup. I was strugling for 2 days to properly configure it in Arduino IDE. When doing it inproperly ESP32 was falling into bootloop. Luckly i found information that I am suppose to set my board as bellow:
+
+<p align="center">
+    <img width="500" src="https://user-images.githubusercontent.com/96399051/201499719-ee92b460-ac90-4714-8273-037efe10895e.PNG">
+</p>
+
+### BUT #7
+I have to buy bigger battery and implement deep sleep in ESP32
+
+## On the bright side
+###USB C works beautifuly
 
 
