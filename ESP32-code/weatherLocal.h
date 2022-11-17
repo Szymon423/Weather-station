@@ -6,16 +6,13 @@
 
 class WeatherLocal {
   private:
-    float temperature;
-    float humidity;
-    int sensorPin;
     DHT dht;
 
   public:
-    float getHumidity();
-    float getTemperature();
+    int getHumidity();
+    int getTemperature();
 
-  WeatherLocal(int, int);
+  WeatherLocal(uint8_t, uint8_t);
   ~WeatherLocal();
 
 };
