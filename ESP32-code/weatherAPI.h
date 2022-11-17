@@ -9,11 +9,11 @@ class WeatherAPI {
 
   public:
     String icon;
-    float windSpeed;
-    float temp;
-    float tempMax;
-    float tempMin;
-    float tempFeelsLike;
+    int windSpeed;
+    int temp;
+    int tempMax;
+    int tempMin;
+    int tempFeelsLike;
     int pressure;
     int humidity;
 
@@ -24,8 +24,7 @@ class WeatherAPI {
     String coordinatesLat;
     String requestString;
 
-  WeatherAPI();
-  ~WeatherAPI();
+  
 
   private: 
     void getData();
@@ -35,5 +34,7 @@ class WeatherAPI {
 
   public:
     void update();
+    WeatherAPI();
+    ~WeatherAPI();
 
 };
