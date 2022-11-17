@@ -1,17 +1,17 @@
-#include "weatherLOCAL.h"
+#include "include/weatherLocal.h"
 #include <String.h>
 #include <DHT.h>
 
-WeatherLocal::WeatherLocal(int pin, int type) : dht(pin, type) {}
+WeatherLocal::WeatherLocal(uint8_t pin, uint8_t type) : dht(pin, type) {
+  WeatherLocal::dht.begin();
+}
 
 WeatherLocal::~WeatherLocal() {}
 
-float WeatherLocal::getTemperature() {
-  WeatherLocal::temperature = WeatherLocal::dht.readTemperature();
-  return WeatherLocal::temperature;
+int WeatherLocal::getTemperature() {
+  return static_cast <int> (WeatherLocal::dht.readTemperature());
 }
 
-float WeatherLocal::getHumidity() {
-  WeatherLocal::humidity = WeatherLocal::dht.readHumidity();
-  return WeatherLocal::humidity;
+int WeatherLocal::getHumidity() {
+  return static_cast <int> (WeatherLocal::dht.readHumidity());
 }
