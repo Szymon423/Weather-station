@@ -1,16 +1,17 @@
-#include "WeatherAPI.h"
+#include "include/weatherAPI.h"
 #include <String.h>
+#include <HTTPClient.h>
 
 WeatherAPI::WeatherAPI() {
   WeatherAPI::icon = "";
-  WeatherAPI::windSpeed = 0.0;
-  WeatherAPI::temp = 0.0;
-  WeatherAPI::tempMax = 0.0;
-  WeatherAPI::tempMin = 0.0;
-  WeatherAPI::tempFeelsLike = 0.0;
+  WeatherAPI::windSpeed = 0;
+  WeatherAPI::temp = 0;
+  WeatherAPI::tempMax = 0;
+  WeatherAPI::tempMin = 0;
+  WeatherAPI::tempFeelsLike = 0;
   WeatherAPI::pressure = 0;
   WeatherAPI::humidity = 0;
-  WeatherAPI::APIKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+  WeatherAPI::APIKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
   WeatherAPI::coordinatesLon = "17.0549";
   WeatherAPI::coordinatesLat = "51.1107";
   WeatherAPI::JSON = "";
@@ -18,11 +19,21 @@ WeatherAPI::WeatherAPI() {
 }
 
 WeatherAPI::~WeatherAPI() {
-  Serial.println("Deleting object...");
+  // Serial.println("Deleting object...");
 }
 
 void WeatherAPI::getData() {
   // send API request and store it at proper file
+  HTTPClient client;
+  client.begin(WeatherAPI::requestString);
+   
+  if (client.GET() > 0) {
+  WeatherAPI::JSON = client.getString();
+  Serial.println(WeatherAPI::JSON);
+  } 
+  else {
+  Serial.println("\nError on HTTP request");
+  }
 
   return;
 }
@@ -37,13 +48,13 @@ void WeatherAPI::processData() {
   */
   // process JSON to separate 
   WeatherAPI::icon = WeatherAPI::getValueOf("icon");
-  WeatherAPI::windSpeed = WeatherAPI::getValueOf("wind").toInt();
+  WeatherAPI::windSpeed = WeatherAPI::getValueOf("speed").toInt();
   WeatherAPI::pressure = WeatherAPI::getValueOf("pressure").toInt();
   WeatherAPI::humidity = WeatherAPI::getValueOf("humidity").toInt();
-  WeatherAPI::temp = WeatherAPI::getValueOf("temp").toFloat(); 
-  WeatherAPI::tempMax = WeatherAPI::getValueOf("temp_max").toFloat();
-  WeatherAPI::tempMin = WeatherAPI::getValueOf("temp_min").toFloat();
-  WeatherAPI::tempFeelsLike = WeatherAPI::getValueOf("feels_like").toFloat();
+  WeatherAPI::temp = WeatherAPI::getValueOf("temp").toFloat() - 273.0; 
+  WeatherAPI::tempMax = static_cast<int>(WeatherAPI::getValueOf("temp_max").toFloat()) - 273.0;
+  WeatherAPI::tempMin = static_cast<int>(WeatherAPI::getValueOf("temp_min").toFloat()) - 273.0;
+  WeatherAPI::tempFeelsLike = static_cast<int>(WeatherAPI::getValueOf("feels_like").toFloat()) - 273.0;
   return;
 }
 
@@ -61,8 +72,11 @@ void WeatherAPI::generateRequestString() {
   // example:
   // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
-  WeatherAPI::requestString += "https://api.openweathermap.org/data/2.5/weather?lat=" + String(WeatherAPI::coordinatesLat); 
+  WeatherAPI::requestString = "https://api.openweathermap.org/data/2.5/weather?lat=" + String(WeatherAPI::coordinatesLat); 
   WeatherAPI::requestString += "&lon=" + String(WeatherAPI::coordinatesLon) + "&appid=" + String(WeatherAPI::APIKey);
+  Serial.print("\n");
+  Serial.println(WeatherAPI::requestString);
+  Serial.print("\n");
   return;
 }
 
