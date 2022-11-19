@@ -11,7 +11,7 @@ WeatherAPI::WeatherAPI() {
   WeatherAPI::tempFeelsLike = "";
   WeatherAPI::pressure = "";
   WeatherAPI::humidity = "";
-  WeatherAPI::APIKey = "xxxxxxxxxxxxxxxx";
+  WeatherAPI::APIKey = "xxxxxxxxxxxxxxxxxxxxxx";
   WeatherAPI::coordinatesLon = "17.0549";
   WeatherAPI::coordinatesLat = "51.1107";
   WeatherAPI::JSON = "";
@@ -48,8 +48,8 @@ void WeatherAPI::processData() {
   // floats need a bit more clearing - controling precision   
   WeatherAPI::windSpeed = String(WeatherAPI::getValueOf("speed").toFloat(), 1);
   WeatherAPI::temp = String(WeatherAPI::getValueOf("temp").toFloat() - 273.0, 0); 
-  WeatherAPI::tempMax = String(WeatherAPI::getValueOf("temp_max").toFloat() - 273.0, 0);
-  WeatherAPI::tempMin = String(WeatherAPI::getValueOf("temp_min").toFloat() - 273.0, 0);
+  WeatherAPI::tempMax = String(static_cast <int> (WeatherAPI::getValueOf("temp_max").toFloat() - 273.0));
+  WeatherAPI::tempMin = String(static_cast <int> (WeatherAPI::getValueOf("temp_min").toFloat() - 273.0));
   WeatherAPI::tempFeelsLike = String(WeatherAPI::getValueOf("feels_like").toFloat() - 273.0, 0);
   return;
 }
