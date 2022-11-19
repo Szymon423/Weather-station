@@ -9,13 +9,13 @@ class WeatherAPI {
 
   public:
     String icon;
-    int windSpeed;
-    int temp;
-    int tempMax;
-    int tempMin;
-    int tempFeelsLike;
-    int pressure;
-    int humidity;
+    String windSpeed;
+    String temp;
+    String tempMax;
+    String tempMin;
+    String tempFeelsLike;
+    String pressure;
+    String humidity;
 
   private:
     String JSON;
@@ -23,8 +23,6 @@ class WeatherAPI {
     String coordinatesLon;
     String coordinatesLat;
     String requestString;
-
-  
 
   private: 
     void getData();
