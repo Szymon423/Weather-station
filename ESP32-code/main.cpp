@@ -15,8 +15,8 @@
 
 
 // dane do logowania do wifi
-const char* ssid = "UPC3460460";
-const char* password = "fq6XghjgYtyw";
+const char* ssid = "xxxxxxxxx";
+const char* password = "xxxxxxxxxx";
 
 // obiekty przechowujący dane o pogodzie
 Weather weather(DHTPIN, DHTTYPE);
