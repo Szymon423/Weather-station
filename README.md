@@ -163,3 +163,19 @@ Touch sensors do not want to work. Sometimes i get them working, but only someti
 
 ### To do
  * try to find out why touch doesn't work
+ * implement checking battery voltage
+ * improve a bit esthetic
+ 
+ ## Power measurements
+ Becouse of my hardware limitations I was not able to properly calculate current consumption of my board. I am using METEX M-3850 multimeter which when I want to measure low currents like in deep sleep mode is causing brown-outs. Shunt resistor drops the voltage so much while ESP is using wi-fi that I am unable to properly measure entire cycle of my board.
+ ### Resoults
+ I had to split what I wantet to do into 2 parts:
+ 1. Measuring working current - at 20A range - not to good,
+ 2. Measuring deep sleep current - at mA range - quite good.
+ 
+ The resoults are:
+ * max peeks which my multimeter sees are around 200mA - I assumed that it gives around 100mA on average during cycle which lasts around 30 seconds,
+ * during deepsleep I managed to get 80μA - perfect.
+ I made some calculations, and It turns out that assuming that I can only get 2/3 of my battery cappacity - it's still 2000 mAh, I can get around 2500 cycles. One cycle lasts 10 minutes so all in all it will last for 25 000 minutes which are around 416 hours which makes 17 days on single charge.
+ 
+ Actually it's a bit less that I was hoping for. I want it to last for at least a month. So I'll tweak cycle time and do some proper current consumption measurements if i get better current meters.
