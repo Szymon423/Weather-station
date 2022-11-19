@@ -1,17 +1,17 @@
-#include "include/weatherAPI.h"
+#include <WeatherAPI.h>
 #include <String.h>
 #include <HTTPClient.h>
 
 WeatherAPI::WeatherAPI() {
   WeatherAPI::icon = "";
-  WeatherAPI::windSpeed = 0;
-  WeatherAPI::temp = 0;
-  WeatherAPI::tempMax = 0;
-  WeatherAPI::tempMin = 0;
-  WeatherAPI::tempFeelsLike = 0;
-  WeatherAPI::pressure = 0;
-  WeatherAPI::humidity = 0;
-  WeatherAPI::APIKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+  WeatherAPI::windSpeed = "";
+  WeatherAPI::temp = "";
+  WeatherAPI::tempMax = "";
+  WeatherAPI::tempMin = "";
+  WeatherAPI::tempFeelsLike = "";
+  WeatherAPI::pressure = "";
+  WeatherAPI::humidity = "";
+  WeatherAPI::APIKey = "xxxxxxxxxxxxxxxx";
   WeatherAPI::coordinatesLon = "17.0549";
   WeatherAPI::coordinatesLat = "51.1107";
   WeatherAPI::JSON = "";
@@ -39,22 +39,18 @@ void WeatherAPI::getData() {
 }
 
 void WeatherAPI::processData() {
-  // so the response looks like this:
-  /*
-  {"coord":{"lon":17.0549,"lat":51.1107},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],"base":"stations",
-  "main":{"temp":296.59,"feels_like":296.37,"temp_min":295.15,"temp_max":297.03,"pressure":1027,"humidity":53},"visibility":10000,
-  "wind":{"speed":3.6,"deg":220},"clouds":{"all":0},"dt":1666958079,"sys":{"type":2,"id":2073402,"country":"PL","sunrise":1666935408,
-  "sunset":1666971249},"timezone":7200,"id":3081368,"name":"Wrocław","cod":200}
-  */
-  // process JSON to separate 
+  // process JSON to separate
+  // ready strings and ints don't need any more conversion
   WeatherAPI::icon = WeatherAPI::getValueOf("icon");
-  WeatherAPI::windSpeed = WeatherAPI::getValueOf("speed").toInt();
-  WeatherAPI::pressure = WeatherAPI::getValueOf("pressure").toInt();
-  WeatherAPI::humidity = WeatherAPI::getValueOf("humidity").toInt();
-  WeatherAPI::temp = WeatherAPI::getValueOf("temp").toFloat() - 273.0; 
-  WeatherAPI::tempMax = static_cast<int>(WeatherAPI::getValueOf("temp_max").toFloat()) - 273.0;
-  WeatherAPI::tempMin = static_cast<int>(WeatherAPI::getValueOf("temp_min").toFloat()) - 273.0;
-  WeatherAPI::tempFeelsLike = static_cast<int>(WeatherAPI::getValueOf("feels_like").toFloat()) - 273.0;
+  WeatherAPI::pressure = WeatherAPI::getValueOf("pressure");
+  WeatherAPI::humidity = WeatherAPI::getValueOf("humidity");
+
+  // floats need a bit more clearing - controling precision   
+  WeatherAPI::windSpeed = String(WeatherAPI::getValueOf("speed").toFloat(), 1);
+  WeatherAPI::temp = String(WeatherAPI::getValueOf("temp").toFloat() - 273.0, 0); 
+  WeatherAPI::tempMax = String(WeatherAPI::getValueOf("temp_max").toFloat() - 273.0, 0);
+  WeatherAPI::tempMin = String(WeatherAPI::getValueOf("temp_min").toFloat() - 273.0, 0);
+  WeatherAPI::tempFeelsLike = String(WeatherAPI::getValueOf("feels_like").toFloat() - 273.0, 0);
   return;
 }
 
@@ -84,7 +80,22 @@ String WeatherAPI::getValueOf(String str) {
   // find start string
   int startPos = WeatherAPI::JSON.indexOf(str) + str.length() + 2;
   // find end char position basing on input type
-  int finishPos = (str.equals("icon") ? WeatherAPI::JSON.indexOf('"', startPos) : WeatherAPI::JSON.indexOf('"', startPos));
+  int finishPos = WeatherAPI::JSON.indexOf('"', startPos);
+  
+  if (str.equals("speed")) {
+    finishPos -= 1;
+  }
+  if (str.equals("humidity")) {
+    finishPos -= 2;
+  }
+  if (str.equals("pressure")) {
+    finishPos -= 1;
+  }
+  if (str.equals("icon")) {
+    startPos += 1;
+    finishPos = WeatherAPI::JSON.indexOf('"', startPos + 2);
+  }
+    
   // return proper string
   return WeatherAPI::JSON.substring(startPos, finishPos);
 }
